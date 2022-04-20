@@ -3,11 +3,9 @@
  * @return {number}
  */
 var dominantIndex = function(nums) {
-    if (nums.length === 1) return 0;
-
+    let index = 0;
     let maxNumber = Math.max(...nums);
 
-    let index = 0;
     for (let i = 0; i < nums.length; i++) {
         if (maxNumber === nums[i]) {
             index = i;

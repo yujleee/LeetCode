@@ -3,17 +3,17 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function(nums) {
-  // n을 정의하기
-  const n = nums.length;
+// 범위에 없는 숫자를 넣을 배열
+ let result = [];
 
-  // range 배열에 1~n까지의 값 넣기
-  let result = [];
-
+// 범위 카운트 변수     
   let range = 1;
-  for (let i = 0; i < n; i++) {
-    if (!nums.includes(range)) result.push(range);
+    
+// nums에 range 인덱스값이 없으면 result에 넣기 
+  while (range <= nums.length) {
+    if (nums.indexOf(range) === -1) result.push(range);
     range++;
   }
 
-  return result;    
+  return result; 
 };

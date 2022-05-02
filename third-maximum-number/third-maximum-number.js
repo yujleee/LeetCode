@@ -8,8 +8,9 @@ var thirdMax = function(nums) {
 
   // set으로 중복 제거
   let set = new Set(sorting);
+    
 
-  if (set.size < 3) return Math.max(...nums);
+  if (set.size < 3) return sorting[0];
 
   return [...set][2];
 };

@@ -8,7 +8,6 @@ function Node(val) {
  */
 var MyLinkedList = function () {
   this.head = null;
-  this.length = 0;
 };
 
 MyLinkedList.prototype.getLength = function () {
@@ -47,7 +46,6 @@ MyLinkedList.prototype.addAtHead = function (val) {
   node.next = this.head;
   this.head = node;
 
-  this.length++;
 };
 
 /**
@@ -66,7 +64,7 @@ MyLinkedList.prototype.addAtTail = function (val) {
     curr = curr.next;
   }
   curr.next = node; // 끝지점에서 새로운 node
-  this.length++;
+
 };
 
 /**
@@ -76,15 +74,17 @@ MyLinkedList.prototype.addAtTail = function (val) {
  * @return {void}
  */
 MyLinkedList.prototype.addAtIndex = function (index, val) {
-  if (index === 0) {
-    this.addAtHead(val);
-    return;
+  if (index < 0 || index > this.getLength()) return;
+
+  if(index === 0){
+      this.addAtHead(val);
+      return;
   }
-  if (index === this.getLength()) {
-    this.addAtTail(val);
-    return;
+
+  if(index === this.getLength()){
+      this.addAtTail(val);
+      return;
   }
-  if (index > this.getLength()) return;
 
   let curr = this.head;
   let node = new Node(val);
@@ -94,7 +94,6 @@ MyLinkedList.prototype.addAtIndex = function (index, val) {
   let next = curr.next;
   curr.next = node;
   node.next = next;
-  this.length++;
 };
 
 /**
@@ -115,6 +114,4 @@ MyLinkedList.prototype.deleteAtIndex = function (index) {
     curr = curr.next;
   }
   curr.next = curr.next.next;
-
-  this.length--;
 };
